@@ -35,7 +35,7 @@ function renderTasks(tasksToRender = null) {
         taskElement.innerHTML = `
             <div class="task-info">
                 <span class="${task.completed ? 'completed' : ''}">${task.description}</span>
-                <span>Até: ${task.dueDate}</span>
+                <span>Até: ${formatDate(task.dueDate)}</span> <!-- Formata a data -->
             </div>
             <div class="task-buttons">
                 <button class="complete" onclick="toggleComplete(${index})">${task.completed ? 'Desmarcar' : 'Concluir'}</button>
@@ -46,6 +46,7 @@ function renderTasks(tasksToRender = null) {
         taskList.appendChild(taskElement);
     });
 }
+
 
 
 
@@ -173,6 +174,25 @@ function filterUpcomingTasks() {
     // Renderiza as tarefas filtradas
     renderFilteredTasks(filteredTasks);
 }
+// Função para formatar a data no formato "dia, mês, ano"
+function formatDate(dateString) {
+    const date = new Date(dateString); // Converte a string para um objeto Date
+
+    // Array com os nomes dos meses
+    const months = [
+        'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+        'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+    ];
+
+    // Obtém o dia, mês e ano
+    const day = date.getDate(); // Dia do mês
+    const month = months[date.getMonth()]; // Mês
+    const year = date.getFullYear(); // Ano
+
+    // Retorna a data formatada
+    return `${day}, ${month}, ${year}`;
+}
+
 
 // Função para exibir as tarefas concluídas
 function showCompletedTasks() {
