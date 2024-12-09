@@ -11,6 +11,14 @@ body {
     padding: 0;
     box-sizing: border-box;
 }
+/* Ajusta a largura para 50% dentro de um iframe */
+@media (min-width: 0px) {
+    body {
+        width: 50vw; /* 50% da largura da viewport */
+        margin: auto; /* Centraliza horizontalmente */
+    }
+}
+
 
 /* Contêiner principal */
 .container {
